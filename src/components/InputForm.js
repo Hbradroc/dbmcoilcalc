@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -452,52 +451,6 @@ export default function InputForm({ onCalculation, onLoading }) {
     </form>
   );
 }
-=======
-import React, { useState } from 'react';
-import axios from 'axios';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
-export default function InputForm({ onCalculation, onLoading }) {
-  const [formData, setFormData] = useState({
-    coilType: 2,
-    airInletTemp: 7,
-    airInletHumidity: 50,
-    fluidType: 1,
-    fluidInletTemp: 7,
-    fluidOutletTemp: 12,
-    rows: 2,
-    finPitch: 3.0,
-    tubes: 10,
-    circuits: 2,
-    coilLength: 500,
-    coilHeight: 250,
-    tubeMaterial: 0,
-    finMaterial: 1,
-    frameMaterial: 'FeZn',
-    frameThickness: '2.0mm',
-    calculationType: 1,
-    volumeFlow: 1000,
-    maxPressureDrop: 10
-  });
-
-  const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [coilTypes, setCoilTypes] = useState({});
-  const [materials, setMaterials] = useState({});
-
-  // Load available options on component mount
-  React.useEffect(() => {
-    loadOptions();
-  }, []);
-
-  const loadOptions = async () => {
-    try {
-      const [typesRes, materialsRes] = await Promise.all([
-        axios.get(`${API_URL}/api/coil-types`),
-        axios.get(`${API_URL}/api/materials`)
-      ]);
-      setCoilTypes(typesRes.data);
       setMaterials(materialsRes.data);
     } catch (error) {
       console.error('Failed to load options:', error);
@@ -906,4 +859,3 @@ export default function InputForm({ onCalculation, onLoading }) {
     </form>
   );
 }
->>>>>>> bfc12cde6c003c10313d7bb9d6a3cc210d063bf4
