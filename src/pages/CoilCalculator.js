@@ -5,7 +5,6 @@ import ResultsDisplay from '../components/ResultsDisplay';
 
 export default function CoilCalculator() {
   const [calculation, setCalculation] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   return (
     <div>
@@ -15,7 +14,6 @@ export default function CoilCalculator() {
           <div>
             <InputForm 
               onCalculation={setCalculation}
-              onLoading={setLoading}
             />
           </div>
           <div>

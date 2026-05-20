@@ -28,25 +28,6 @@ export default function InputForm({ onCalculation, onLoading }) {
 
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [coilTypes, setCoilTypes] = useState({});
-  const [materials, setMaterials] = useState({});
-
-  React.useEffect(() => {
-    loadOptions();
-  }, []);
-
-  const loadOptions = async () => {
-    try {
-      const [typesRes, materialsRes] = await Promise.all([
-        axios.get(`${API_URL}/api/coil-types`),
-        axios.get(`${API_URL}/api/materials`)
-      ]);
-      setCoilTypes(typesRes.data);
-      setMaterials(materialsRes.data);
-    } catch (error) {
-      console.error('Failed to load options:', error);
-    }
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
